@@ -1,0 +1,89 @@
+<html>
+   <head>
+      <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
+
+
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+      <script type = "application/javascript">
+         function loadJSON(){
+            var data_file = "http://www.surfnewsnetwork.com/json-api/home/";
+            // var data_file = "https://data.hawaii.gov/resource/b2y9-ab7v.json";
+            // var data_file = "http://www.tutorialspoint.com/json/data.json";
+
+            var http_request = new XMLHttpRequest();
+            // try{
+            //    // Opera 8.0+, Firefox, Chrome, Safari
+            //    http_request = new XMLHttpRequest();
+            // }catch (e){
+            //    // Internet Explorer Browsers
+            //    try{
+            //       http_request = new ActiveXObject("Msxml2.XMLHTTP");
+					
+            //    }catch (e) {
+				
+            //       try{
+            //          http_request = new ActiveXObject("Microsoft.XMLHTTP");
+            //       }catch (e){
+            //          // Something went wrong
+            //          alert("Your browser broke!");
+            //          return false;
+            //       }
+					
+            //    }
+            // }
+			
+            http_request.onreadystatechange = function(){
+			
+               if (http_request.readyState == 4  ){
+                  // Javascript function JSON.parse to parse JSON data
+                  var jsonObj = JSON.parse(http_request.responseText);
+
+                  // jsonObj variable now contains the data structure and can
+                  // be accessed as jsonObj.name and jsonObj.country.
+                  // document.getElementById("Name").innerHTML = jsonObj[1].farmer_s_market;
+                  // console.log(jsonObj[1].farmer_s_market);
+                  // document.getElementById("State").innerHTML = jsonObj.country;
+                  document.getElementById("Name").innerHTML ="<h2>Town Forecast</h2>" + jsonObj[0].town;
+
+                  document.getElementById("State").innerHTML = "<h2>Sandys' Forecast</h2>" + jsonObj[0].sundys;
+               }
+            }
+			
+            http_request.open("GET", data_file, true);
+
+            http_request.send();
+         }
+		
+      </script>
+	
+      <title>SANDYS</title>
+   </head>
+
+	
+   <body>
+   <div class="container">
+   
+      <div class="jumbotron">
+       <h1>SURF FORECAST</h1>
+      </div>
+      
+      <div class = "central">
+         <button type = "button" onclick = "loadJSON()">Click for waves.</button>
+      </div>
+
+      <div class="row">
+         <div class="col-md-6" id = "Name"><h2>....</h2></div>
+         <div class="col-md-6" id = "State"><h2>....</h2></div>
+      </div>
+
+   </div>
+      
+
+    
+		
+   </body>
+		
+</html>

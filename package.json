@@ -1,0 +1,25 @@
+{
+  "name": "occ",
+  "version": "1.0.0",
+  "description": "hacc project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hacc2016project/hacc2016.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "node": "0.0.0",
+    "schedule": "^0.1.0"
+  }
+}
